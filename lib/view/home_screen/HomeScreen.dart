@@ -16,8 +16,8 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   void initState()
   {
-    WidgetsBinding.instance.addPostFrameCallback((timestamp){
-      context.read<HomeScreenController>().fetchData();
+    WidgetsBinding.instance.addPostFrameCallback((timestamp) async {
+     await context.read<HomeScreenController>().fetchData();
     });
   }
   @override
@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen>
             subtitle: Text(homeProvider.employeesDataModel!.emDataModelList![index].employeeAge.toString()),
           ),
           separatorBuilder: (context, index) => SizedBox(height: 20,),
-          itemCount: homeProvider.employeesDataModel!.emDataModelList!.length ?? 0),
+          itemCount: homeProvider.employeesDataModel.emDataModelList!.length ?? 0),
     );
   }
 }
